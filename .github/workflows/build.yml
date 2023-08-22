@@ -46,4 +46,4 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "$CURRENT_TAG" -t "ATTENTION" -n "$CURRENT_TAG is released. (CAUTIOUS: use at your own risk)" *.zip
+          gh release create "$CURRENT_TAG" -t "BTSNIFFER" -n "Latest linux version $CURRENT_TAG" *.zip
