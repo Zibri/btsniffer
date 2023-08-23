@@ -274,8 +274,8 @@ func main() {
 		log.SetOutput(os.Stdout)
 
 		var p [10]*btsniffer
-		for i := 0; i < 3; i++ {
-		p[i] = &btsniffer{
+		//for i := 0; i < 3; i++ {
+		p[0] = &btsniffer{
 			laddr:        net.JoinHostPort(addr, strconv.Itoa(int(port)+i)),
 			timeout:      timeout,
 			maxFriends:   friends,
@@ -285,10 +285,10 @@ func main() {
 			blacklist:    core.NewBlackList(5*time.Minute, 1000),
 			keywordFile:  keywordFile,
 		}
-		go p[i].run()
+		go p[0].run()
 		}
 
-                p[3] = &btsniffer{
+                p[1] = &btsniffer{
                         laddr:        net.JoinHostPort(addr, strconv.Itoa(int(port)+5)),
                         timeout:      timeout,
                         maxFriends:   friends,
@@ -299,7 +299,7 @@ func main() {
                         keywordFile:  keywordFile,
                 }
 
-		return p[3].run()
+		return p[1].run()
 	}
 
 	root.Flags().StringVarP(&addr, "addr", "a", "0.0.0.0", "listen on given address (default all, ipv4 and ipv6)")
